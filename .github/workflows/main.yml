@@ -1,0 +1,26 @@
+name: CI
+# 指定在main分支发生pull_request事件时才触发运行工作流程
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      # 拉取项目代码
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      # 下载node
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          # vite 需要在 node>=12 的环境下执行
+          node-version: "16.17.1"
+      # 安装依赖
+      - name: Installing Dependencies
+        run: yarn install
+      # 运行代码扫描
+      - name: Test:unit
+        run: yarn test:unit
