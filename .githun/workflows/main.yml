@@ -16,7 +16,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          # vite 需要在 node>=12 的环境下执行
+          # 该机node版本
           node-version: "16.17.1"
       # 安装依赖
       - name: Installing Dependencies
